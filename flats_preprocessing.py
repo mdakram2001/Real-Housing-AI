@@ -95,6 +95,6 @@ df.insert(loc=1, column='property_type', value='flat')
 # Finally, we will check the info and shape of the dataframe and save it to a new csv file called "my_flats_preprocessed.csv" without the index.
 df.info()
 df.shape
-df.to_csv('my_flats_preprocessed.csv', index=False)
+df.to_csv('my_flats_cleaned.csv', index=False)
 
 

@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 # Loading the cleaned dataframes for flats and houses
-flats = pd.read_csv('my_flats_preprocessed.csv')
+flats = pd.read_csv('my_flats_cleaned.csv')
 houses = pd.read_csv('my_house_cleaned.csv')
 
 # Merging the two dataframes, ignoring the index to avoid duplicate indices in the merged dataframe
