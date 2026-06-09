@@ -314,3 +314,117 @@ Observations:
 print(df['facing'].isnull().sum())
 print(df['facing'].fillna('NA', inplace=True))
 print(df['facing'].describe())
+print(df['facing'].value_counts()) # It is evenly distributed across all the categories.
+
+# 13. Age Possession
+print(df['agePossession'].isnull().sum())
+print(df['agePossession'].describe())
+print(df['agePossession'].value_counts())
+
+# 14. Areas
+# super_built_up_area
+print(df['super_built_up_area'].isnull().sum())
+print(df['super_built_up_area'].describe())
+"""Distribution of Super Built-Up Area"""
+sns.histplot(df['super_built_up_area'].dropna(), kde=True, bins=50, color='lightblue')
+plt.title('Distribution of Super Built-Up Area')
+plt.xlabel('Super Built-Up Area (sqft)')
+plt.ylabel('Frequency')
+plt.show()
+"""Boxplot for Super Built-Up Area"""
+sns.boxplot(x=df['super_built_up_area'].dropna(), color='lightgreen')
+plt.title('Boxplot of Super Built-Up Area')
+plt.xlabel('Super Built-Up Area (sqft)')
+plt.show()
+"""
+Observations:
+1. Most properties have a super built-up area between 1000 sqft and 2500 sqft.
+2. There are some properties with a super built-up area significantly larger, leading to a right-skewed distribution.
+3. The boxplot indicates the presence of outliers in the super built-up area, with some values significantly higher than the rest.
+4. The IQR lies between approx 1480 sqft and 2215 sqft, indicating that the middle 50% of the properties have a super built-up area within this range.
+5. Data points beyond the upper whisker can be considered as outliers.
+"""
+# built_up_area
+print(df['built_up_area'].isnull().sum())
+print(df['built_up_area'].describe())
+"""Distribution of Built-Up Area"""
+sns.histplot(df['built_up_area'].dropna(), kde=True, bins=50, color='lightblue')
+plt.title('Distribution of Built-Up Area')
+plt.xlabel('Built-Up Area (sqft)')
+plt.ylabel('Frequency')
+plt.show()
+"""Boxplot for Built-Up Area"""
+sns.boxplot(x=df['built_up_area'].dropna(), color='lightgreen')
+plt.title('Boxplot of Built-Up Area')
+plt.xlabel('Built-Up Area (sqft)')
+plt.show()
+"""
+Observations:
+1. Most properties have a built-up area between 500 sqft and 3500 sqft.
+2. There are few properties with a built-up area very large, leading to a right-skewed distribution.
+3. The boxplot indicates the presence of outliers in the built-up area, with some values significantly higher than the rest.
+4. The IQR is relatively compact, but the whiskers extend to higher values due to the presence of outliers.
+5. The presence of extreme values on the higher side suggests there may be outliers or data errors. This could also be due to some properties being significantly larger than the majority of properties in the dataset like luxury apartments or commercial spaces.
+"""
+# carpet_area
+print(df['carpet_area'].isnull().sum())
+print(df['carpet_area'].describe())
+"""Distribution of Carpet Area"""
+sns.histplot(df['carpet_area'].dropna(), kde=True, bins=50, color='lightblue')
+plt.title('Distribution of Carpet Area')
+plt.xlabel('Carpet Area (sqft)')
+plt.ylabel('Frequency')
+plt.show()
+"""Boxplot for Carpet Area"""
+sns.boxplot(x=df['carpet_area'].dropna(), color='lightgreen')
+plt.title('Boxplot of Carpet Area')
+plt.xlabel('Carpet Area (sqft)')
+plt.show()
+"""
+Observations:
+Similar to super built-up area and built-up area, the carpet area also shows a right-skewed distribution,
+some properties have extremely large carpet area, leading to the presence of outliers in the dataset. 
+"""
+
+# 15. Additional Rooms
+plt.figure(figsize=(20, 12))
+additional_rooms = ['servant room', 'store room', 'pooja room', 'study room', 'others']
+for i, room in enumerate(additional_rooms):
+    ax = plt.subplot(2, 3, i+1)
+    df[room].value_counts().plot.pie(autopct='%1.1f%%', startangle=90, ax=ax)
+    plt.title(f'Distribution of {room.capitalize()}')
+    plt.xlabel(f'Number of {room.capitalize()}')
+    plt.ylabel('Frequency')
+plt.tight_layout()
+plt.show()
+
+# 16. Furnishing Type
+print(df['furnishing_type'].isnull().sum())
+print(df['furnishing_type'].describe())
+print(df['furnishing_type'].value_counts())
+"""Distribution of Furnishing Type using Pie Chart"""
+df['furnishing_type'].value_counts().plot(kind='pie', autopct='%0.2f%%', startangle=90)
+plt.title('Distribution of Furnishing Type')
+plt.xlabel('Furnishing Type')
+plt.ylabel('Frequency')
+plt.show()
+
+# 17. Luxury Score
+print(df['luxury_score'].isnull().sum())
+print(df['luxury_score'].describe())
+"""Distribution of Luxury Score"""
+sns.histplot(df['luxury_score'], kde=True, bins=50, color='lightblue')
+plt.title('Distribution of Luxury Score')
+plt.xlabel('Luxury Score')
+plt.ylabel('Frequency')
+plt.show()
+"""Boxplot for Luxury Score"""
+sns.boxplot(x=df['luxury_score'], color='lightgreen')
+plt.title('Boxplot of Luxury Score')
+plt.xlabel('Luxury Score')
+plt.show()
+"""
+Observations:
+The luxury score has multiple peaks, suggesting a multi-modal distribution. There's significant number of properties with lower score around 0-50, and another peak is observed around 110-130 range.
+The box plot reveals that the majority of properties have a luxury score between 30 and 110, The IQR lies between these values.
+"""
