@@ -12,3 +12,5 @@ my_gurgaon_properties_post_feature_selection.csv
 my_gurgaon_properties_post_feature_selection_v2.csv
 /App/df.pkl
 /App/pipeline.pkl
+/App/feature_text.pkl
+App/datasets
